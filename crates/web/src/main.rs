@@ -1,5 +1,6 @@
 use dioxus::prelude::*;
 use ui::Claim;
+use ui::FAQ;
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
 const MAIN_CSS: Asset = asset!("/assets/main.css");
@@ -28,5 +29,6 @@ fn App() -> Element {
             h1 { "0xNAME faucet" }
         }
         Claim {}
+        FAQ {}
     }
 }
