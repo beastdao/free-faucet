@@ -1,0 +1,76 @@
+/* Claim */
+#claim {
+    width: 50vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30vh;
+    background-color: #f8f6f0;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+#claim form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#claim button {
+    background-color: #226699;
+    color: #f8f6f0;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 15vw;
+    font-size: 20px;
+}
+
+#claim button:hover {
+    background-color: green;
+}
+
+#claim h4 {
+    margin: 0px 0px 15px 0px;
+}
+
+#claim input {
+    border: none;
+    background-color: transparent;
+    color: #226699;
+    transition: border-bottom-color 0.2s ease;
+    outline: none;
+    display: block;
+    padding: 0px 0px 5px 0px;
+    width: 35vw;
+    justify-self: left;
+    margin-right: 5vw;
+    font-size: 26px;
+}
+
+#claim input:focus {
+    border-bottom-color: #6d85c6;
+    color: #226699;
+}
+
+#claim p {
+    margin: 20px 0px 0px auto;
+    color: red;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+}
+
+#claim .success {
+    color: #226699; /* Blue for success */
+}
+#claim .error {
+    color: red; /* Red for errors */
+}
+#claim .loading {
+    color: violet; /* Blue for success */
+}

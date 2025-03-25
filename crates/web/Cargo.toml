@@ -1,0 +1,16 @@
+[package]
+name = "web"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+dioxus = { workspace = true, features = [] }
+ui = { workspace = true }
+server = { workspace = true }
+getrandom = { workspace = true, optional = false }
+
+
+[features]
+default = []
+server = ["dioxus/server", "server/server"]
+web = ["dioxus/web"]

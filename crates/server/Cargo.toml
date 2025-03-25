@@ -1,0 +1,13 @@
+[package]
+name = "server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+dioxus = { workspace = true, features = ["fullstack"] }
+dotenv = { workspace = true, optional = true }
+zeroxname-ethereum = { workspace = true, optional = true }
+db = { workspace = true, optional = true }
+thiserror.workspace = true
+[features]
+server = ["dioxus/server", "dep:db", "dep:zeroxname-ethereum", "dep:dotenv"]
