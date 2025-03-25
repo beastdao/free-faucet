@@ -32,3 +32,9 @@
     margin-bottom: 5px;
     margin-left: 0;
 }
+
+@media (max-width: 768px) {
+    #faq dl {
+        font-size: 15px;
+    }
+}

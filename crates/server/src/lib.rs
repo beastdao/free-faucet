@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 
 #[cfg(feature = "server")]
-use std::time::{ SystemTime, SystemTimeError};
+use std::time::{SystemTime, SystemTimeError};
 #[cfg(feature = "server")]
 use zeroxname_ethereum::Address;
 #[cfg(feature = "server")]
