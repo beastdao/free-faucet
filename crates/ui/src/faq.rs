@@ -10,7 +10,7 @@ pub fn FAQ() -> Element {
             dl {
                 dt { "How does the faucet work?" }
                 dd {
-                    "To request funds, simply enter your 0xNAME with any suffix such as "
+                    "To request funds, simply enter your 0xNAME with any TLN (Top Level Name) such as "
                     a { href: "https://app.0xname.foo/eth", target: "_blank", "myname@eth" }
                     " or "
                     a {
