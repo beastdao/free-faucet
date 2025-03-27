@@ -48,7 +48,8 @@ pub fn FAQ() -> Element {
                 }
                 dt { "How can I support the faucet?" }
                 dd {
-                    "You can support the faucet by donating Sepolia ETH to the address: 0xf0E5D3Cc05206987a125afC404b719e54Fa942a8"
+                    "You can support the faucet by donating Sepolia ETH to the address: "
+                    code { "0xf0E5D3Cc05206987a125afC404b719e54Fa942a8" }
                 }
             }
         }
