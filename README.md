@@ -1,5 +1,6 @@
 # 0xname-sepolia-faucet
- 
+<img width="1470" alt="0xNAME SEPOLIA Faucet" src="https://github.com/user-attachments/assets/6587dc93-7030-4416-a640-32c106ca62c8" />
+
 ### Local Development
 
 - **Install Rust**  
