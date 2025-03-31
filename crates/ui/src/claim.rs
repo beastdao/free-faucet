@@ -50,7 +50,7 @@ pub fn Claim() -> Element {
                         response_state.set(ResponseState::Error);
                         return;
                     }
-                    match server::claim_server(name.to_string()).await {
+                    match server::shared::claim_server(name.to_string()).await {
                         Ok(data) => {
                             response_state.set(ResponseState::Success);
                             response.set(format!("Sent! See tx on <a href='https://sepolia.etherscan.io/tx/{}' target='_blank'>Etherscan</a>", data));
