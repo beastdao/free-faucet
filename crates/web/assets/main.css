@@ -1,103 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
-    background-color: #269;
-    background-image: linear-gradient(
-            rgba(255, 255, 255, 0.5) 2px,
-            transparent 2px
-        ),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
-        linear-gradient(rgba(255, 255, 255, 0.28) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.28) 1px, transparent 1px);
-    background-size:
-        100px 100px,
-        100px 100px,
-        20px 20px,
-        20px 20px;
-    background-position:
-        -2px -2px,
-        -2px -2px,
-        -1px -1px,
-        -1px -1px;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    margin: 50px;
+  background-color: #269;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.5) 2px,
+      transparent 2px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
+    linear-gradient(rgba(255, 255, 255, 0.28) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.28) 1px, transparent 1px);
+  background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+  background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+  /* margin: 50px; */
 }
 
 #header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 6vh;
-    width: 50vw;
-    margin: 10vh 25vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 6vh;
+  width: 50vw;
+  margin: 10vh 25vw;
 }
 
 #header h1 {
-    font-size: 4rem;
-    width: 25vw;
-    text-align: center;
-    line-height: 1;
-    color: #d0e8ff;
-    animation: neon 0.08s ease-in-out infinite alternate;
+  font-size: 4rem;
+  width: 25vw;
+  text-align: center;
+  line-height: 1;
+  color: #d0e8ff;
+  animation: neon 0.08s ease-in-out infinite alternate;
 }
 
 @keyframes neon {
-    from {
-        text-shadow:
-            0 0 6px rgba(202, 228, 225, 0.92),
-            0 0 30px rgba(202, 228, 225, 0.34),
-            0 0 12px rgba(30, 132, 242, 0.52),
-            0 0 21px rgba(30, 132, 242, 0.92),
-            0 0 34px rgba(30, 132, 242, 0.78),
-            0 0 54px rgba(30, 132, 242, 0.92);
-    }
-    to {
-        text-shadow:
-            0 0 6px rgba(202, 228, 225, 0.98),
-            0 0 30px rgba(202, 228, 225, 0.42),
-            0 0 12px rgba(30, 132, 242, 0.58),
-            0 0 22px rgba(30, 132, 242, 0.84),
-            0 0 38px rgba(30, 132, 242, 0.88),
-            0 0 60px rgba(30, 132, 242, 1);
-    }
+  from {
+    text-shadow: 0 0 6px rgba(202, 228, 225, 0.92),
+      0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px rgba(30, 132, 242, 0.52),
+      0 0 21px rgba(30, 132, 242, 0.92), 0 0 34px rgba(30, 132, 242, 0.78),
+      0 0 54px rgba(30, 132, 242, 0.92);
+  }
+  to {
+    text-shadow: 0 0 6px rgba(202, 228, 225, 0.98),
+      0 0 30px rgba(202, 228, 225, 0.42), 0 0 12px rgba(30, 132, 242, 0.58),
+      0 0 22px rgba(30, 132, 242, 0.84), 0 0 38px rgba(30, 132, 242, 0.88),
+      0 0 60px rgba(30, 132, 242, 1);
+  }
 }
 
 #orb {
-    /* Removed the extra period */
-    animation: spin 4s linear infinite;
-    width: 100px;
-    height: 100px;
-    margin: 0;
-    margin-top: 1px;
-    border-radius: 50%;
-    box-shadow:
-        inset 0 0 50px #fff,
-        inset 20px 0 60px violet,
-        inset -20px 0 60px #0ff,
-        inset 20px 0 100px violet,
-        inset -20px 0 100px #0ff,
-        0 0 50px #fff,
-        -10px 0 60px violet,
-        10px 0 60px #0ff;
+  /* Removed the extra period */
+  animation: spin 4s linear infinite;
+  /* width: 100px;
+    height: 100px; */
+  width: 130px;
+  height: 130px;
+  margin: 0;
+  margin-top: 1px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 50px #fff, inset 20px 0 60px violet,
+    inset -20px 0 60px #0ff, inset 20px 0 100px violet, inset -20px 0 100px #0ff,
+    0 0 50px #fff, -10px 0 60px violet, 10px 0 60px #0ff;
 }
 
 @keyframes spin {
-    100% {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: 768px) {
-    #header {
-        justify-content: space-between;
-        width: auto;
-        margin: 10vh 2vw;
-    }
-    #header h1 {
-        font-size: 10vw;
-        width: auto;
-    }
-    #orb {
-        width: 100px;
-        height: 67px;
-    }
+  #header {
+    justify-content: space-between;
+    flex-direction: column;
+    height: auto;
+    gap: 20px;
+    /* width: auto; */
+    width: 100%;
+    margin: 10vh 2vw;
+  }
+  #header h1 {
+    font-size: 30px;
+    width: auto;
+  }
+  #orb {
+    width: 100px;
+    height: 100px;
+  }
 }
