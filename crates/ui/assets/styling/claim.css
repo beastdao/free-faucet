@@ -1,93 +1,93 @@
 /* Claim */
 #claim {
-    width: 50vw;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10vh;
-    background-color: #eef2f6;
-    padding: 20px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 10vh;
+  background-color: #eef2f6;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 #claim form {
-    display: flex;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
 #claim button {
-    background-color: #226699;
-    color: #eef2f6;
-    border: none;
-    padding: 10px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 15vw;
-    font-size: 20px;
+  background-color: #226699;
+  color: #eef2f6;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 15vw;
+  font-size: 20px;
 }
 
 #claim button:hover {
-    background-color: #3a8fd8;
+  background-color: #3a8fd8;
 }
 
 #claim h4 {
-    margin: 0px 0px 15px 0px;
+  margin: 0px 0px 15px 0px;
 }
 
 #claim input {
-    border: none;
-    background-color: transparent;
-    color: #3a6fa0;
-    transition: border-bottom-color 0.2s ease;
-    outline: none;
-    display: block;
-    padding: 0px 0px 5px 0px;
-    width: 35vw;
-    justify-self: left;
-    margin-right: 5vw;
-    font-size: 26px;
+  border: none;
+  background-color: transparent;
+  color: #3a6fa0;
+  transition: border-bottom-color 0.2s ease;
+  outline: none;
+  display: block;
+  padding: 0px 0px 5px 0px;
+  width: 35vw;
+  justify-self: left;
+  font-size: 26px;
 }
 
 #claim input:focus {
-    border-bottom-color: #1e5faa;
-    color: #1e5faa;
+  border-bottom-color: #1e5faa;
+  color: #1e5faa;
 }
 
 #claim p {
-    margin: 20px 0px 0px auto;
-    color: red;
-    width: 100%;
-    text-align: center;
-    font-size: 18px;
+  margin: 20px 0px 0px auto;
+  color: red;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
 }
 
 #claim .success {
-    color: #3a8fd8;
+  color: #3a8fd8;
 }
 #claim .error {
-    color: #dc3545;
+  color: #dc3545;
 }
 #claim .loading {
-    color: plum;
+  color: plum;
 }
 
 @media (max-width: 768px) {
-    #claim form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-    #claim button {
-        width: 50vw;
-        font-size: 20px;
-    }
-    #claim input {
-        width: 50vw;
-        font-size: 20px;
-    }
+  #claim {
+    width: 90%;
+  }
+  #claim form {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  #claim input {
+    margin: 0;
+    width: 80vw;
+  }
+  #claim button {
+    width: 80vw;
+    font-size: 18px;
+  }
 }
