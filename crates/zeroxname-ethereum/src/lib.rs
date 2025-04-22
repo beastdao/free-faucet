@@ -141,6 +141,8 @@ impl ZeroxnameEthereum {
             .send_transaction(tx)
             .await
             .map_err(|e| EthErrors::RpcError(e))?
+            .with_required_confirmations(1)
+            .with_timeout(Some(std::time::Duration::from_secs(600)))
             .watch()
             .await
             .map_err(|e| EthErrors::PendingTxError(e))?;
