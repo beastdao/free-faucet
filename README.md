@@ -1,5 +1,7 @@
 # 0xname-sepolia-faucet
-<img width="1470" alt="0xNAME SEPOLIA Faucet" src="https://github.com/user-attachments/assets/6587dc93-7030-4416-a640-32c106ca62c8" />
+
+
+<img width="1470" alt="0xNAME SEPOLIA Faucet" src="https://github.com/user-attachments/assets/b229a088-ef2e-48b3-b1a6-7bd9e140d79b" />
 
 ### Local Development
 
