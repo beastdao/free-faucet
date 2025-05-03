@@ -53,7 +53,13 @@ pub fn Claim() -> Element {
                     match server::shared::claim_server(name.to_string()).await {
                         Ok(data) => {
                             response_state.set(ResponseState::Success);
-                            response.set(format!("Sent! See tx on <a href='https://sepolia.etherscan.io/tx/{}' target='_blank'>Etherscan</a>", data));
+                            response
+                                .set(
+                                    format!(
+                                        "Sent! See tx on <a href='https://sepolia.etherscan.io/tx/{}' target='_blank'>Etherscan</a>",
+                                        data,
+                                    ),
+                                );
                         }
                         Err(ServerFnError::ServerError(msg)) => {
                             response_state.set(ResponseState::Error);
@@ -86,7 +92,7 @@ pub fn Claim() -> Element {
                         ResponseState::Error => "error",
                         _ => "",
                     },
-                    dangerous_inner_html: "{response}"
+                    dangerous_inner_html: "{response}",
                 }
             }
         }

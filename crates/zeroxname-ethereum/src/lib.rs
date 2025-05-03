@@ -87,23 +87,23 @@ fn hash(name: &str, community: &str) -> Result<U256, EthErrors> {
 //add error handling Result <Self,EthErrors>?
 impl ZeroxnameEthereum {
     pub fn new(
-        apikey: &str,
+        rpc_mainnet: &str,
+        rpc_sepolia: &str,
         private_key: &str,
         faucet_amount: u64,
         fee_max: f64,
     ) -> Result<Self, EthErrors> {
         let signer =
             PrivateKeySigner::from_str(private_key).map_err(|e| EthErrors::InitSignerError(e))?;
-        let url_mainnet = format!("https://mainnet.infura.io/v3/{}", apikey);
-        let url_sepolia = format!("https://sepolia.infura.io/v3/{}", apikey);
+
         let wallet = EthereumWallet::from(signer);
 
         let sepolia_provider = ProviderBuilder::new()
             .wallet(wallet)
-            .on_http(url_sepolia.parse().expect("Failed to parse sepolia URL"));
+            .on_http(rpc_sepolia.parse().expect("Failed to parse sepolia URL"));
 
         let provider = ProviderBuilder::new()
-            .on_http(url_mainnet.parse().expect("Failed to parse mainnet URL"));
+            .on_http(rpc_mainnet.parse().expect("Failed to parse mainnet URL"));
 
         let names_registry_instance =
             NamesRegistry::new(NAMES_REGISTRY_CONTRACT_ADDRESS, provider.clone());

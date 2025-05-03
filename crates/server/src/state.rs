@@ -28,13 +28,20 @@ pub struct AppState {
 impl AppState {
     pub fn new() -> Result<Self, AppStateErrors> {
         dotenv().ok();
-        let rpc_key = env::var("RPC_KEY")?;
+        let rpc_mainnet = env::var("RPC_MAINNET")?;
+        let rpc_sepolia = env::var("RPC_SEPOLIA")?;
         let private_key = env::var("PRIVATE_KEY")?;
         let db_path = env::var("DB_PATH")?;
         let faucet_limit: u64 = env::var("FAUCET_LIMIT")?.parse()?;
         let fee_threshold: f64 = env::var("FEE_THRESHOLD")?.parse()?;
         let cooldown_sec: u64 = env::var("COOLDOWN_SEC")?.parse()?;
-        let zx = ZeroxnameEthereum::new(&rpc_key, &private_key, faucet_limit, fee_threshold)?;
+        let zx = ZeroxnameEthereum::new(
+            &rpc_mainnet,
+            &rpc_sepolia,
+            &private_key,
+            faucet_limit,
+            fee_threshold,
+        )?;
         let db = DB::new(&db_path, "registry")?;
 
         Ok(Self {
