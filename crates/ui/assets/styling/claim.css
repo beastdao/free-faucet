@@ -3,7 +3,7 @@
   width: 50%;
   margin: 0 auto;
   margin-top: 10vh;
-  background-color: #eef2f6;
+  background-color: #d8d9ff;
   padding: 20px;
   border-radius: 10px;
   display: flex;
@@ -19,8 +19,8 @@
 }
 
 #claim button {
-  background-color: #226699;
-  color: #eef2f6;
+  background-color: #525be1;
+  color: #fdf5f0;
   border: none;
   padding: 10px 10px;
   border-radius: 5px;
@@ -30,7 +30,7 @@
 }
 
 #claim button:hover {
-  background-color: #3a8fd8;
+  background-color: #401d89;
 }
 
 #claim h4 {
@@ -40,7 +40,7 @@
 #claim input {
   border: none;
   background-color: transparent;
-  color: #3a6fa0;
+  color: #401d89;
   transition: border-bottom-color 0.2s ease;
   outline: none;
   display: block;
@@ -52,7 +52,11 @@
 
 #claim input:focus {
   border-bottom-color: #1e5faa;
-  color: #1e5faa;
+  color: #401d89;
+  font-weight: bold;
+}
+#claim input:focus::placeholder {
+  opacity: 0;
 }
 
 #claim p {
@@ -64,13 +68,13 @@
 }
 
 #claim .success {
-  color: #3a8fd8;
+  color: #61aee7;
 }
 #claim .error {
   color: #dc3545;
 }
 #claim .loading {
-  color: plum;
+  color: #f59470;
 }
 
 @media (max-width: 768px) {

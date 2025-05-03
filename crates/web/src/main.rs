@@ -4,6 +4,7 @@ use ui::FAQ;
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
 const MAIN_CSS: Asset = asset!("/assets/main.css");
+const LOGO_IMAGE: Asset = asset!("/assets/logo.png");
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     dioxus::LaunchBuilder::new()
@@ -25,8 +26,14 @@ fn App() -> Element {
         document::Link { rel: "icon", href: FAVICON }
         document::Link { rel: "stylesheet", href: MAIN_CSS }
         div { id: "header",
-            div { id: "orb" }
-            h1 { "0xNAME faucet" }
+            div {
+            id: "logo",
+            img {
+                src: LOGO_IMAGE,
+                alt: "A girl holding ETH crystal in a hand",
+            }
+        }
+            h1 { "Ethereum Sepolia Faucet" }
         }
         Claim {}
         FAQ {}

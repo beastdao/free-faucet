@@ -4,7 +4,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 5vh;
-  background-color: #d6dce6;
+  background-color: #d8d9ff;
   padding: 20px;
   border-radius: 10px;
   display: flex;
@@ -20,7 +20,7 @@
   flex-direction: column;
   justify-content: start;
   font-size: 13px;
-  color: #124577;
+  color: #401d89;
 }
 
 #faq dt {
@@ -47,8 +47,8 @@
 }
 
 #faq code {
-  background-color: #d1cdc7;
-  color: #1e6fb9;
+  background-color: #fdf5f0;
+  color: #401d89;
   word-wrap: break-word;
   overflow-wrap: break-word;
   white-space: pre-wrap;
