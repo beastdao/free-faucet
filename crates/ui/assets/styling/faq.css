@@ -1,55 +1,55 @@
 /* FAQ */
 #faq {
-  width: 50vw;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 5vh;
-  background-color: #d8d9ff;
-  padding: 20px;
-  border-radius: 10px;
-  display: flex;
-  align-items: left;
-  justify-content: space-between;
-  flex-direction: column;
+    width: 50vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5vh;
+    background-color: var(--color-primary);
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: left;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
 #faq dl {
-  flex: 1;
-  padding: 0 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  font-size: 13px;
-  color: #401d89;
+    flex: 1;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    font-size: 13px;
+    color: var(--color-text);
 }
 
 #faq dt {
-  font-weight: bold;
-  margin-bottom: 5px;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
 #faq dd {
-  margin-bottom: 5px;
-  margin-left: 0;
+    margin-bottom: 5px;
+    margin-left: 0;
 }
 #faq code {
-  background-color: #d1cdc7;
-  color: #1e6fb9;
+    background-color: var(--color-bg);
+    color: var(--color-text);
 }
 
 @media (max-width: 768px) {
-  #faq dl {
-    font-size: 15px;
-  }
-  #faq {
-    width: 90vw;
-  }
+    #faq dl {
+        font-size: 15px;
+    }
+    #faq {
+        width: 90vw;
+    }
 }
 
 #faq code {
-  background-color: #fdf5f0;
-  color: #401d89;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  white-space: pre-wrap;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
 }

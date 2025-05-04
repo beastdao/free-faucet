@@ -1,67 +1,65 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 body {
-  background-color: #fdf5f0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  overflow-x: hidden;
-  /* margin: 50px; */
+    background-color: var(--color-bg);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    /* margin: 50px; */
 }
 
 #header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 6vh;
-  width: 50vw;
-  margin: 10vh 25vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 6vh;
+    width: 50vw;
+    margin: 10vh 25vw;
 }
 
 #header h1 {
-  font-size: 3rem;
-  width: 25vw;
-  text-align: center;
-  line-height: 1;
-  color: #525be1
-; 
-  font-weight: 600;
-  text-shadow: none;
+    font-size: 3rem;
+    width: 25vw;
+    text-align: center;
+    line-height: 1;
+    color: var(--color-main-accent);
+    font-weight: 600;
+    text-shadow: none;
 }
 
 #logo {
-  width: 130px;
-  height: 130px;
-  margin: 0;
-  margin-top: 1px;
-  border-radius: 0%;
-  overflow: hidden;
+    width: 130px;
+    height: 130px;
+    margin: 0;
+    margin-top: 1px;
+    border-radius: 0%;
+    overflow: hidden;
 }
 
 #logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
-
 @media (max-width: 768px) {
-  #header {
-    justify-content: space-between;
-    flex-direction: column;
-    height: auto;
-    gap: 20px;
-    /* width: auto; */
-    width: 100%;
-    margin: 3vh 2vw;
-  }
-  #header h1 {
-    font-size: 30px;
-    width: auto;
-  }
-  #logo {
-    width: 100px;
-    height: 100px;
-  }
+    #header {
+        justify-content: space-between;
+        flex-direction: column;
+        height: auto;
+        gap: 20px;
+        /* width: auto; */
+        width: 100%;
+        margin: 3vh 2vw;
+    }
+    #header h1 {
+        font-size: 30px;
+        width: auto;
+    }
+    #logo {
+        width: 100px;
+        height: 100px;
+    }
 }
