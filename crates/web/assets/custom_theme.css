@@ -1,0 +1,11 @@
+/* custom_theme.css */
+/* Uncomment and change only color variables, what you want to override */
+:root {
+    /* --color-bg: white; */
+    /* --color-main-accent: purple; */
+    /* --color-primary: green; */
+    /* --color-text: black; */
+    /* --color-success: green; */
+    /* --color-error: red; */
+    /* --color-loading: pink; */
+}
