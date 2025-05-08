@@ -6,6 +6,7 @@ members = [
     "crates/server",
     "crates/zeroxname-ethereum",
     "crates/db",
+    "crates/shared-types",
 ]
 
 [workspace.dependencies]
@@ -31,6 +32,7 @@ web = { path = "crates/web" }
 server = { path = "crates/server" }
 zeroxname-ethereum = { path = "crates/zeroxname-ethereum" }
 db = { path = "crates/db" }
+shared-types = {path = "crates/shared-types"}
 
 [profile]
 
