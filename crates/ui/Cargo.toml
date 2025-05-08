@@ -6,3 +6,5 @@ edition = "2021"
 [dependencies]
 dioxus = { workspace = true }
 server = { workspace = true, default-features = false }
+shared-types.workspace = true
+chrono.workspace = true 

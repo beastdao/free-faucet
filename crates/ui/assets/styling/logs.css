@@ -1,0 +1,67 @@
+/* LOGS*/
+#logs {
+    width: 70vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5vh;
+    background-color: var(--color-primary);
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+#logs ul {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    height: 60vh;
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
+    padding-right: 8px;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-main-accent) transparent;
+}
+
+#logs li {
+    flex: 0 0 auto;
+    margin: 0;
+    width: 100%;
+    padding: 2px 20px;
+    gap: 8px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    font-size: 13px;
+    color: var(--color-text);
+}
+
+#logs li strong {
+    display: inline-block;
+    min-width: 5vw;
+    transition: all 0.2s ease;
+}
+#logs li strong.success {
+    color: var(--color-success);
+}
+#logs li strong.prevented {
+    color: var(--color-loading);
+}
+
+#logs li strong.error {
+    color: var(--color-error);
+}
+
+@media (max-width: 768px) {
+    #logs ul {
+        font-size: 15px;
+    }
+    #logs {
+        width: 90vw;
+    }
+}
