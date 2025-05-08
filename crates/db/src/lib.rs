@@ -2,7 +2,7 @@ use fjall::{Config, PartitionCreateOptions, PartitionHandle};
 
 #[derive(Clone)]
 pub struct DB {
-    partition: PartitionHandle,
+    partition_registry: PartitionHandle,
 }
 
 #[derive(Debug, thiserror::Error)]
@@ -34,12 +34,12 @@ impl DB {
                 source: e,
             })?;
         Ok(Self {
-            partition: registry,
+            partition_registry: registry,
         })
     }
 
-    pub fn insert_k_v(&self, key: &str, value: u64) -> Result<(), DBErrors> {
-        self.partition
+    pub fn insert_k_v_claim(&self, key: &str, value: u64) -> Result<(), DBErrors> {
+        self.partition_registry
             .insert(key, value.to_be_bytes())
             .map_err(|e| DBErrors::DBError {
                 context: "insert",
@@ -47,11 +47,14 @@ impl DB {
             })
     }
 
-    pub fn get_value(&self, key: &str) -> Result<Option<u64>, DBErrors> {
-        match self.partition.get(key).map_err(|e| DBErrors::DBError {
-            context: "get",
-            source: e,
-        })? {
+    pub fn get_value_claim(&self, key: &str) -> Result<Option<u64>, DBErrors> {
+        match self
+            .partition_registry
+            .get(key)
+            .map_err(|e| DBErrors::DBError {
+                context: "get",
+                source: e,
+            })? {
             Some(v) => Ok(Some(convert_slice_to_u64(v))),
             None => Ok(None),
         }

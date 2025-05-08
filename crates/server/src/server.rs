@@ -50,11 +50,11 @@ pub async fn is_in_cooldown(last_record: u64) -> Result<bool, ServerFnError> {
 
 pub async fn db_get_last_claim(key: &str) -> Result<u64, ServerFnError> {
     let FromContext(app_state): dioxus::prelude::FromContext<state::AppState> = extract().await?;
-    match app_state.db.get_value(key) {
+    match app_state.db.get_value_claim(key) {
         Ok(Some(value)) => Ok(value),
         Ok(None) => Ok(0),
         Err(e) => Err(ServerFnError::ServerError(format!(
-            "Get value from DB error: {}",
+            "Get claim value from DB error: {}",
             e
         ))),
     }
@@ -62,10 +62,10 @@ pub async fn db_get_last_claim(key: &str) -> Result<u64, ServerFnError> {
 
 pub async fn insert_timestamp(key: &str, value: u64) -> Result<(), ServerFnError> {
     let FromContext(app_state): dioxus::prelude::FromContext<state::AppState> = extract().await?;
-    match app_state.db.insert_k_v(key, value) {
+    match app_state.db.insert_k_v_claim(key, value) {
         Ok(_) => return Ok(()),
         Err(e) => Err(ServerFnError::ServerError(format!(
-            "Insert value to DB error: {}",
+            "Insert claim value to DB error: {}",
             e
         ))),
     }
