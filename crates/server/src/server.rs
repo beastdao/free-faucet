@@ -1,5 +1,6 @@
 use crate::state;
 use dioxus::prelude::*;
+use shared_types::{LogEntry, LogValue};
 use std::time::{SystemTime, SystemTimeError};
 use zeroxname_ethereum::Address;
 
@@ -89,4 +90,10 @@ pub async fn insert_log(
             e
         ))),
     }
+}
+
+pub async fn get_logs() -> Result<Vec<LogEntry>, ServerFnError> {
+    let FromContext(app_state): dioxus::prelude::FromContext<state::AppState> = extract().await?;
+    let logs: Vec<LogEntry> = app_state.db.iter_logs().collect::<Result<Vec<_>, _>>()?;
+    Ok(logs)
 }

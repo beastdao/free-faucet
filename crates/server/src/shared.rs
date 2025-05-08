@@ -37,3 +37,10 @@ pub async fn claim_server(input: String) -> Result<String, ServerFnError> {
     }
     result
 }
+
+use shared_types::LogEntry;
+
+#[server(GetLogs)]
+pub async fn get_all_logs() -> Result<Vec<LogEntry>, ServerFnError> {
+    Ok(get_logs().await?)
+}

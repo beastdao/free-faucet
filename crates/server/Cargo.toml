@@ -8,6 +8,7 @@ dioxus = { workspace = true, features = ["fullstack"] }
 dotenv = { workspace = true, optional = true }
 zeroxname-ethereum = { workspace = true, optional = true }
 db = { workspace = true, optional = true }
+shared-types.workspace = true
 thiserror.workspace = true
 [features]
 server = ["dioxus/server", "dep:db", "dep:zeroxname-ethereum", "dep:dotenv"]
