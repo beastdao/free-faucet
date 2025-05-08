@@ -1,5 +1,6 @@
 use dioxus::prelude::*;
 use ui::Claim;
+use ui::Logs;
 use ui::FAQ;
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
@@ -7,6 +8,29 @@ const LOGO_IMAGE: Asset = asset!("/assets/logo.png");
 const DEFAULT_THEME: Asset = asset!("/assets/default_theme.css");
 const CUSTOM_THEME: Asset = asset!("/assets/custom_theme.css");
 const MAIN_CSS: Asset = asset!("/assets/main.css");
+
+#[derive(Routable, Clone, PartialEq)]
+enum Route {
+    #[route("/")]
+    Home {},
+    #[route("/logs")]
+    Logs {},
+}
+
+#[component]
+fn Home() -> Element {
+    rsx! {
+        Claim {}
+        FAQ {}
+    }
+}
+
+#[component]
+fn LogsPage() -> Element {
+    rsx! {
+        Logs {}
+    }
+}
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     dioxus::LaunchBuilder::new()
@@ -39,7 +63,6 @@ fn App() -> Element {
             }
             h1 { "Ethereum Sepolia Faucet" }
         }
-        Claim {}
-        FAQ {}
+        Router::<Route> {}
     }
 }
