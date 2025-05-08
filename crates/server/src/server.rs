@@ -70,3 +70,23 @@ pub async fn insert_timestamp(key: &str, value: u64) -> Result<(), ServerFnError
         ))),
     }
 }
+
+pub async fn insert_log(
+    timestamp: u64,
+    status: bool,
+    input: String,
+    result: String,
+) -> Result<(), ServerFnError> {
+    let FromContext(app_state): dioxus::prelude::FromContext<state::AppState> = extract().await?;
+
+    match app_state
+        .db
+        .insert_k_v_logs(timestamp, status, input, result)
+    {
+        Ok(_) => return Ok(()),
+        Err(e) => Err(ServerFnError::ServerError(format!(
+            "Insert log to DB error: {}",
+            e
+        ))),
+    }
+}
