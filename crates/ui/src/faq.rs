@@ -37,6 +37,13 @@ pub fn FAQ() -> Element {
                     }
                     ". If you find a bug, please submit an issue. If you like the project, you can give it a star or fork and run your own faucet."
                 }
+                dt { "Does the faucet have logs?" }
+
+                dd {
+                    "Yes, the faucet logs are available here: "
+                    a { href: "/logs", "Logs" }
+                }
+
                 dt { "Got more questions or feedback?" }
                 dd {
                     "Help us improve! Join the conversation on our "
