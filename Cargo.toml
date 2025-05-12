@@ -14,7 +14,7 @@ dioxus = { version = "0.6.0" , features = ["router"]}
 getrandom = { version = "0.2", features = ["js"] }
 thiserror = "2.0.11"
 serde = { version = "1.0.197", features = ["derive"] }
-fjall = "2.6.7"
+fjall = "2.10.0"
 alloy-dyn-abi = "0.8.23"
 alloy-network = "0.12.5"
 alloy-primitives = "0.8.23"

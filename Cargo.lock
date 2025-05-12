@@ -962,9 +962,9 @@ dependencies = [
 
 [[package]]
 name = "byteview"
-version = "0.5.4"
+version = "0.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7a4516a8561bff0598c45512f90ee04ed62cee2cb36839e650a0a0704d5f741f"
+checksum = "6236364b88b9b6d0bc181ba374cf1ab55ba3ef97a1cb6f8cddad48a273767fb5"
 
 [[package]]
 name = "c-kzg"
@@ -1288,6 +1288,7 @@ checksum = "575f75dfd25738df5b91b8e43e14d44bda14637a58fae779fd2b064f8bf3e010"
 name = "db"
 version = "0.1.0"
 dependencies = [
+ "dotenv",
  "fjall",
  "format-bytes",
  "rmp-serde",
@@ -2027,9 +2028,9 @@ dependencies = [
 
 [[package]]
 name = "fjall"
-version = "2.6.7"
+version = "2.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0ad81b05d96e456433c704ae51210be48241c43214f97820c9254b80f9428cae"
+checksum = "b929b3db7be7d7b4d4df67fb016fc446b8f57507b48a82e69d2a30610e460f28"
 dependencies = [
  "byteorder",
  "byteview",
@@ -2883,9 +2884,9 @@ dependencies = [
 
 [[package]]
 name = "lsm-tree"
-version = "2.6.6"
+version = "2.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "49c29f6322847a38368942f42eb86c3875fb2e946276f9f3df805cc6ada80b81"
+checksum = "d0d03b764a7e3009cc4d314bfce42ce28b4a2c458fc7149b57817cbed7898f43"
 dependencies = [
  "byteorder",
  "crossbeam-skiplist",
@@ -4815,18 +4816,18 @@ checksum = "ba73ea9cf16a25df0c8caa16c51acb937d5712a8429db78a3ee29d5dcacd3a65"
 
 [[package]]
 name = "value-log"
-version = "1.6.0"
+version = "1.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7ea85c4fcd677afc3a00abb1fb0fdc494ad3bb5d7d14736c75cb7c07b3ddd182"
+checksum = "62fc7c4ce161f049607ecea654dca3f2d727da5371ae85e2e4f14ce2b98ed67c"
 dependencies = [
  "byteorder",
  "byteview",
  "interval-heap",
  "log",
  "path-absolutize",
- "quick_cache",
  "rustc-hash 2.1.1",
  "tempfile",
+ "varint-rs",
  "xxhash-rust",
 ]
 

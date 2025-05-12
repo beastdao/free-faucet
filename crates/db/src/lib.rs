@@ -1,13 +1,27 @@
-use fjall::{Config, PartitionCreateOptions, PartitionHandle, UserKey, UserValue};
+use fjall::{Config, Keyspace, PartitionCreateOptions, PartitionHandle, UserKey, UserValue};
 use format_bytes::format_bytes;
 use shared_types::{LogEntry, LogValue};
 struct DbLogEntry(LogEntry);
 pub struct SerializableLogValue<'a>(pub &'a LogValue);
 
+pub struct DBMeta {
+    pub journal_disk_space: u64,
+    pub partition_count: usize,
+    pub partition_size_limit: u64,
+    pub log_entries: usize,
+    pub log_disk_space: u64,
+    pub log_segments: usize,
+    pub claim_entries: usize,
+    pub claim_disk_space: u64,
+    pub claim_segments: usize,
+}
+
 #[derive(Clone)]
 pub struct DB {
     partition_registry: PartitionHandle,
     partition_logs: PartitionHandle,
+    keyspace: Keyspace,
+    size_limit: u64,
 }
 
 pub trait ToBytes {
@@ -70,19 +84,34 @@ fn convert_slice_to_tuple(slice: &[u8]) -> Result<(u64, u8), DBErrors> {
 }
 
 impl DB {
-    pub fn new(path: &str, partition_name: &str) -> Result<Self, DBErrors> {
-        let keyspace = Config::new(path).open().map_err(|e| DBErrors::DBError {
-            context: "init",
-            source: e,
-        })?;
-        let registry = keyspace
-            .open_partition(partition_name, PartitionCreateOptions::default())
+    pub fn new(path: &str, limit: u64) -> Result<Self, DBErrors> {
+        let keyspace = Config::new(path)
+            .max_write_buffer_size(1_024 * 1_024)
+            .open()
             .map_err(|e| DBErrors::DBError {
                 context: "init",
                 source: e,
             })?;
+
+        let registry = keyspace
+            .open_partition(
+                "claim",
+                PartitionCreateOptions::default().compaction_strategy(
+                    fjall::compaction::Strategy::Fifo(fjall::compaction::Fifo::new(limit, None)),
+                ),
+            )
+            .map_err(|e| DBErrors::DBError {
+                context: "init",
+                source: e,
+            })?;
+
         let logs = keyspace
-            .open_partition("logs", PartitionCreateOptions::default())
+            .open_partition(
+                "logs",
+                PartitionCreateOptions::default().compaction_strategy(
+                    fjall::compaction::Strategy::Fifo(fjall::compaction::Fifo::new(limit, None)),
+                ),
+            )
             .map_err(|e| DBErrors::DBError {
                 context: "init",
                 source: e,
@@ -91,6 +120,8 @@ impl DB {
         Ok(Self {
             partition_registry: registry,
             partition_logs: logs,
+            keyspace: keyspace,
+            size_limit: limit,
         })
     }
 
@@ -114,6 +145,29 @@ impl DB {
             Some(v) => Ok(Some(convert_slice_to_u64(v))),
             None => Ok(None),
         }
+    }
+
+    pub fn get_db_meta(&self) -> Result<DBMeta, DBErrors> {
+        Ok(DBMeta {
+            journal_disk_space: self.keyspace.disk_space(),
+            partition_count: self.keyspace.partition_count(),
+            partition_size_limit: self.size_limit,
+            log_entries: self.partition_logs.len().map_err(|e| DBErrors::DBError {
+                context: "get log entries",
+                source: e,
+            })?,
+            log_disk_space: self.partition_logs.disk_space(),
+            log_segments: self.partition_logs.segment_count(),
+            claim_entries: self
+                .partition_registry
+                .len()
+                .map_err(|e| DBErrors::DBError {
+                    context: "get claim entries",
+                    source: e,
+                })?,
+            claim_disk_space: self.partition_registry.disk_space(),
+            claim_segments: self.partition_registry.segment_count(),
+        })
     }
 
     pub fn insert_k_v_logs(

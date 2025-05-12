@@ -11,3 +11,4 @@ shared-types.workspace = true
 format-bytes.workspace = true
 [dev-dependencies]
 tempfile = "3.3"
+dotenv = "0.15"

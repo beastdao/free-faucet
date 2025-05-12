@@ -24,7 +24,7 @@ fn Home() -> Element {
         Header {
             logo_img: LOGO_IMAGE,
             title: "Ethereum Sepolia Faucet".to_string(),
-            alt_text: "A girl holding ETH crystal in a hand".to_string()
+            alt_text: "A girl holding ETH crystal in a hand".to_string(),
         }
         Claim {}
         FAQ {}
@@ -37,7 +37,7 @@ fn LogsPage() -> Element {
         Header {
             logo_img: LOGO_LOGS_IMAGE,
             title: "Ethereum Sepolia Faucet".to_string(),
-            alt_text: "A girl looking at holographic display".to_string()
+            alt_text: "A girl looking at holographic display".to_string(),
         }
         Logs {}
     }
@@ -55,10 +55,7 @@ fn Header(logo_img: Asset, title: String, alt_text: String) -> Element {
     rsx! {
         div { id: "header",
             div { id: "logo",
-                img {
-                    src: logo_img,
-                    alt: alt_text,
-                }
+                img { src: logo_img, alt: alt_text }
             }
             h1 { "{title}" }
         }

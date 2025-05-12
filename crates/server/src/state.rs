@@ -35,6 +35,7 @@ impl AppState {
         let faucet_limit: u64 = env::var("FAUCET_LIMIT")?.parse()?;
         let fee_threshold: f64 = env::var("FEE_THRESHOLD")?.parse()?;
         let cooldown_sec: u64 = env::var("COOLDOWN_SEC")?.parse()?;
+        let partition_size_limit: u64 = env::var("PARTITION_SIZE_LIMIT")?.parse()?;
         let zx = ZeroxnameEthereum::new(
             &rpc_mainnet,
             &rpc_sepolia,
@@ -42,7 +43,7 @@ impl AppState {
             faucet_limit,
             fee_threshold,
         )?;
-        let db = DB::new(&db_path, "registry")?;
+        let db = DB::new(&db_path, partition_size_limit)?;
 
         Ok(Self {
             zx,
