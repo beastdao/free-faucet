@@ -1,8 +1,10 @@
 [package]
 name = "ui"
-version = "0.1.0"
-edition = "2021"
+version.workspace = true
+edition.workspace = true
 
 [dependencies]
 dioxus = { workspace = true }
-server = { workspace = true, default-features = false }
+server = { workspace = true }
+shared-types.workspace = true
+chrono.workspace = true 

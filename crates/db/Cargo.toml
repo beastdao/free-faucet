@@ -1,8 +1,14 @@
 [package]
 name = "db"
-version = "0.1.0"
-edition = "2024"
+version.workspace = true
+edition.workspace = true
 
 [dependencies]
 fjall.workspace = true
 thiserror.workspace = true
+rmp-serde.workspace = true
+shared-types.workspace = true
+format-bytes.workspace = true
+[dev-dependencies]
+tempfile = "3.3"
+dotenv = "0.15"
