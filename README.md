@@ -3,6 +3,12 @@
 
 <img width="1470" alt="0xNAME SEPOLIA Faucet" src="https://github.com/user-attachments/assets/c44d8598-9c6b-43f6-9ca2-7c1c2a4bf0a0" />
 
+### version [0.1.1] - 2025-05-14
+
+**What's new:**
+- Fully redesigned UI, with custom Themes
+- Faucet logs added
+- Configurable storage: ability set custom log/db limits with automatic FIFO compaction — ensuring stable storage size by pruning stale claims and logs.
 
 
 
