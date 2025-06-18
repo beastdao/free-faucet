@@ -48,6 +48,16 @@ impl TryFrom<(UserKey, UserValue)> for DbLogEntry {
     }
 }
 
+trait DBErrorContext<T> {
+    fn db_error_with_context(self, context: &'static str) -> Result<T, DBErrors>;
+}
+
+impl<T> DBErrorContext<T> for Result<T, fjall::Error> {
+    fn db_error_with_context(self, context: &'static str) -> Result<T, DBErrors> {
+        self.map_err(|e| DBErrors::DBError { context, source: e })
+    }
+}
+
 //update in conveninece layer style.
 #[derive(Debug, thiserror::Error)]
 pub enum DBErrors {
@@ -100,10 +110,7 @@ impl DB {
                     fjall::compaction::Strategy::Fifo(fjall::compaction::Fifo::new(limit, None)),
                 ),
             )
-            .map_err(|e| DBErrors::DBError {
-                context: "init",
-                source: e,
-            })?;
+            .db_error_with_context("init claim partition")?;
 
         let logs = keyspace
             .open_partition(
@@ -112,10 +119,7 @@ impl DB {
                     fjall::compaction::Strategy::Fifo(fjall::compaction::Fifo::new(limit, None)),
                 ),
             )
-            .map_err(|e| DBErrors::DBError {
-                context: "init",
-                source: e,
-            })?;
+            .db_error_with_context("init logs partition")?;
 
         Ok(Self {
             partition_registry: registry,
@@ -128,20 +132,15 @@ impl DB {
     pub fn insert_k_v_claim(&self, key: &str, value: u64) -> Result<(), DBErrors> {
         self.partition_registry
             .insert(key, value.to_be_bytes())
-            .map_err(|e| DBErrors::DBError {
-                context: "insert",
-                source: e,
-            })
+            .db_error_with_context("insert")
     }
 
     pub fn get_value_claim(&self, key: &str) -> Result<Option<u64>, DBErrors> {
         match self
             .partition_registry
             .get(key)
-            .map_err(|e| DBErrors::DBError {
-                context: "get",
-                source: e,
-            })? {
+            .db_error_with_context("get")?
+        {
             Some(v) => Ok(Some(convert_slice_to_u64(v))),
             None => Ok(None),
         }
@@ -152,19 +151,16 @@ impl DB {
             journal_disk_space: self.keyspace.disk_space(),
             partition_count: self.keyspace.partition_count(),
             partition_size_limit: self.size_limit,
-            log_entries: self.partition_logs.len().map_err(|e| DBErrors::DBError {
-                context: "get log entries",
-                source: e,
-            })?,
+            log_entries: self
+                .partition_logs
+                .len()
+                .db_error_with_context("get log entries")?,
             log_disk_space: self.partition_logs.disk_space(),
             log_segments: self.partition_logs.segment_count(),
             claim_entries: self
                 .partition_registry
                 .len()
-                .map_err(|e| DBErrors::DBError {
-                    context: "get claim entries",
-                    source: e,
-                })?,
+                .db_error_with_context("get claim entries")?,
             claim_disk_space: self.partition_registry.disk_space(),
             claim_segments: self.partition_registry.segment_count(),
         })
@@ -184,23 +180,18 @@ impl DB {
         let serialized = log_struct.to_bytes();
         self.partition_logs
             .insert(key, serialized)
-            .map_err(|e| DBErrors::DBError {
-                context: "insert",
-                source: e,
-            })
+            .db_error_with_context("insert log")
     }
 
     pub fn get_value_log(&self, key: (u64, u8)) -> Result<Option<LogValue>, DBErrors> {
         let timestamp_bytes = key.0.to_be_bytes();
-        let status_bytes = (key.1 as u8).to_be_bytes();
+        let status_bytes = key.1.to_be_bytes();
         let key = format_bytes!(b"{}\0{}", timestamp_bytes, status_bytes);
         match self
             .partition_logs
             .get(&key)
-            .map_err(|e| DBErrors::DBError {
-                context: "get",
-                source: e,
-            })? {
+            .db_error_with_context("get log value")?
+        {
             Some(v) => Ok(Some(rmp_serde::from_slice(&v).expect("should deserialize"))),
             None => Ok(None),
         }
