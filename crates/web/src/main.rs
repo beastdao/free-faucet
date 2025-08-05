@@ -63,21 +63,37 @@ fn Header(logo_img: Asset, title: String, alt_text: String) -> Element {
 }
 
 #[component]
-fn App() -> Element {
+fn Head() -> Element {
     rsx! {
-        head {
-            title { "0xNAME Sepolia ETH Faucet" }
-            meta {
-                name: "description",
-                content: "Sepolia Testnet ETH Faucet powered by 0xname public good names on Ethereum blockchain",
-            }
+        document::Title { "Ethereum Sepolia Faucet - Claim SepETH" }
+        document::Meta {
+            name: "description",
+            content: "Claim free Sepolia ETH. A fast, open-source testnet faucet.",
         }
+        document::Meta {
+            name: "keywords",
+            content: "ethereum, faucet, sepolia, eth faucet, testnet faucet, crypto faucet, sepolia testnet, free faucet, blockchain",
+        }
+        document::Meta { property: "og:title", content: "Sepolia ETH Faucet" }
+        document::Meta {
+            property: "og:description",
+            content: "Claim free Sepolia ETH. Open-source, fast faucet.",
+        }
+        document::Meta { property: "og:type", content: "website" }
+        document::Meta { property: "og:url", content: "https://faucet.free/" }
+        document::Meta { property: "og:image", content: FAVICON }
+        document::Link { rel: "canonical", href: "https://faucet.free/" }
         document::Link { rel: "icon", href: FAVICON }
         document::Link { rel: "stylesheet", href: DEFAULT_THEME }
         document::Link { rel: "stylesheet", href: CUSTOM_THEME }
         document::Link { rel: "stylesheet", href: MAIN_CSS }
+    }
+}
 
-
+#[component]
+fn App() -> Element {
+    rsx! {
+        Head {}
         Router::<Route> {}
     }
 }

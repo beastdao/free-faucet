@@ -14,7 +14,7 @@ members = [
 ]
 
 [workspace.dependencies]
-dioxus = { version = "0.6.0" , features = ["router"]}
+dioxus = { version = "0.6.3", features = ["router"] }
 getrandom = { version = "0.2", features = ["js"] }
 thiserror = "2.0.11"
 serde = { version = "1.0.197", features = ["derive"] }
@@ -39,7 +39,7 @@ web = { path = "crates/web" }
 server = { path = "crates/server" }
 zeroxname-ethereum = { path = "crates/zeroxname-ethereum" }
 db = { path = "crates/db" }
-shared-types = {path = "crates/shared-types"}
+shared-types = { path = "crates/shared-types" }
 
 [profile]
 
