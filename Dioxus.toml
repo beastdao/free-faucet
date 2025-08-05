@@ -3,8 +3,7 @@
 [web.app]
 
 # HTML title tag content
-title = "0xNAME Sepolia ETH Faucet"
-description = "0xname.foo is a public good platform for web3 users to seamlessly create free personal names associated with various web3 communities and projects"
+title = "Sepolia ETH Faucet"
 
 # include `assets` in web platform
 [web.resource]
