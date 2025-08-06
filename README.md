@@ -1,4 +1,4 @@
-# 0xname-sepolia-faucet
+# Ethereum Sepolia Testnet Faucet – Get free Sepolia ETH faucet.free
 
 
 <img width="1470" alt="0xNAME SEPOLIA Faucet" src="https://github.com/user-attachments/assets/c44d8598-9c6b-43f6-9ca2-7c1c2a4bf0a0" />
