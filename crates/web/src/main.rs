@@ -9,6 +9,7 @@ const LOGO_LOGS_IMAGE: Asset = asset!("/assets/logo_logs.png");
 const DEFAULT_THEME: Asset = asset!("/assets/default_theme.css");
 const CUSTOM_THEME: Asset = asset!("/assets/custom_theme.css");
 const MAIN_CSS: Asset = asset!("/assets/main.css");
+const OGIMAGE: Asset = asset!("/assets/OgImage.webp");
 
 #[derive(Routable, Clone, PartialEq)]
 enum Route {
@@ -80,14 +81,13 @@ fn Head() -> Element {
         document::Meta { property: "og:description", content: "Claim free Sepolia ETH instantly. Open-source Ethereum faucet for Web3 developers." }
         document::Meta { property: "og:type", content: "website" }
         document::Meta { property: "og:url", content: "https://faucet.free/" }
-        document::Meta { property: "og:image", content: "/assets/mascot.png" } // chnage to approprimate image
-
+        document::Meta { property: "og:image", content: OGIMAGE }
 
         // Twitter
         document::Meta { name: "twitter:card", content: "summary_large_image" }
         document::Meta { name: "twitter:title", content: "Free Sepolia Ethereum Faucet" }
         document::Meta { name: "twitter:description", content: "Claim Sepolia ETH fast. Open-source, reliable faucet for developers." }
-        document::Meta { name: "twitter:image", content: "/assets/mascot.png" } // chnage to approprimate image
+        document::Meta { name: "twitter:image", content: OGIMAGE }
 
 
         document::Link { rel: "canonical", href: "https://faucet.free/" }
