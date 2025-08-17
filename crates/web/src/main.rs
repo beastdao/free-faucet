@@ -10,6 +10,7 @@ const DEFAULT_THEME: Asset = asset!("/assets/default_theme.css");
 const CUSTOM_THEME: Asset = asset!("/assets/custom_theme.css");
 const MAIN_CSS: Asset = asset!("/assets/main.css");
 const OGIMAGE: Asset = asset!("/assets/OgImage.webp");
+const GA: Asset = asset!("/assets/ga.js");
 
 #[derive(Routable, Clone, PartialEq)]
 enum Route {
@@ -104,6 +105,18 @@ fn Head() -> Element {
         document::Link { rel: "stylesheet", href: DEFAULT_THEME }
         document::Link { rel: "stylesheet", href: CUSTOM_THEME }
         document::Link { rel: "stylesheet", href: MAIN_CSS }
+
+        document::Script {
+            r#async: true,
+            src: "//gc.zgo.at/count.js",
+            "data-goatcounter": "https://faucet.goatcounter.com/count",
+        }
+
+        document::Script {
+            r#async: true,
+            src: "https://www.googletagmanager.com/gtag/js?id=G-915ZM4GQ3S",
+        }
+        document::Script { src: GA }
     }
 }
 
