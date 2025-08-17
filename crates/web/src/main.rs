@@ -66,19 +66,25 @@ fn Header(logo_img: Asset, title: String, alt_text: String) -> Element {
 #[component]
 fn Head() -> Element {
     rsx! {
-         document::Title { "Free Ethereum Sepolia Faucet - Claim Testnet ETH Fast" }
+        document::Title { "Free Ethereum Sepolia Faucet - Claim Testnet ETH Fast" }
         document::Meta {
             name: "description",
-            content: "Get free Sepolia ETH instantly with our open-source Ethereum faucet. Perfect for developers testing dApps and smart contracts on Sepolia testnet."
+            content: "Get free Sepolia ETH instantly with our open-source Ethereum faucet. Perfect for developers testing dApps and smart contracts on Sepolia testnet.",
         }
         document::Meta {
             name: "keywords",
-            content: "ethereum faucet, sepolia faucet, free eth, claim sepolia, testnet eth, blockchain faucet, sepolia testnet, web3 faucet"
+            content: "ethereum faucet, sepolia faucet, free eth, claim sepolia, testnet eth, blockchain faucet, sepolia testnet, web3 faucet",
         }
 
         // openGraph
-        document::Meta { property: "og:title", content: "Free Sepolia Ethereum Faucet - Claim Testnet ETH" }
-        document::Meta { property: "og:description", content: "Claim free Sepolia ETH instantly. Open-source Ethereum faucet for Web3 developers." }
+        document::Meta {
+            property: "og:title",
+            content: "Free Sepolia Ethereum Faucet - Claim Testnet ETH",
+        }
+        document::Meta {
+            property: "og:description",
+            content: "Claim free Sepolia ETH instantly. Open-source Ethereum faucet for Web3 developers.",
+        }
         document::Meta { property: "og:type", content: "website" }
         document::Meta { property: "og:url", content: "https://faucet.free/" }
         document::Meta { property: "og:image", content: OGIMAGE }
@@ -86,7 +92,10 @@ fn Head() -> Element {
         // Twitter
         document::Meta { name: "twitter:card", content: "summary_large_image" }
         document::Meta { name: "twitter:title", content: "Free Sepolia Ethereum Faucet" }
-        document::Meta { name: "twitter:description", content: "Claim Sepolia ETH fast. Open-source, reliable faucet for developers." }
+        document::Meta {
+            name: "twitter:description",
+            content: "Claim Sepolia ETH fast. Open-source, reliable faucet for developers.",
+        }
         document::Meta { name: "twitter:image", content: OGIMAGE }
 
 
