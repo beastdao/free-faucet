@@ -32,7 +32,7 @@
    ```
 - **Clone the Repository**  
    ```sh
-   git clone https://github.com/beastdao/0xname-sepolia-faucet.git
+   git clone https://github.com/beastdao/free-faucet.git
    ```
 - **Change dir to the Project Directory**  
    ```sh
