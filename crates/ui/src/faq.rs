@@ -31,7 +31,7 @@ pub fn FAQ() -> Element {
                 dd {
                     "Yes, the faucet is open source. You can find the code on "
                     a {
-                        href: "https://github.com/beastdao/0xname-sepolia-faucet",
+                        href: "https://github.com/beastdao/free-faucet",
                         target: "_blank",
                         "GitHub"
                     }
