@@ -23,6 +23,7 @@ pub struct AppState {
     pub zx: ZeroxnameEthereum,
     pub db: DB,
     pub cooldown_sec: u64,
+    pub payout_adjustment: f64,
 }
 
 impl AppState {
@@ -35,6 +36,7 @@ impl AppState {
         let faucet_limit: u64 = env::var("FAUCET_LIMIT")?.parse()?;
         let fee_threshold: f64 = env::var("FEE_THRESHOLD")?.parse()?;
         let cooldown_sec: u64 = env::var("COOLDOWN_SEC")?.parse()?;
+        let payout_adjustment: f64 = env::var("PAYOUT_ADJUSTMENT")?.parse()?;
         let partition_size_limit: u64 = env::var("PARTITION_SIZE_LIMIT")?.parse()?;
         let zx = ZeroxnameEthereum::new(
             &rpc_mainnet,
@@ -49,6 +51,7 @@ impl AppState {
             zx,
             db,
             cooldown_sec,
+            payout_adjustment,
         })
     }
 }

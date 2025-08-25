@@ -11,3 +11,10 @@ pub struct LogEntry {
     pub key: (u64, u8),
     pub value: LogValue,
 }
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PayoutRange {
+    pub min: String,
+    pub current: String,
+    pub max: String,
+}

@@ -38,7 +38,13 @@ pub async fn claim_server(input: String) -> Result<String, ServerFnError> {
     result
 }
 
+#[server(Payout)]
+pub async fn get_payout_range_data() -> Result<PayoutRange, ServerFnError> {
+    Ok(get_payout_range().await?)
+}
+
 use shared_types::LogEntry;
+use shared_types::PayoutRange;
 
 #[server(GetLogs)]
 pub async fn get_all_logs() -> Result<Vec<LogEntry>, ServerFnError> {

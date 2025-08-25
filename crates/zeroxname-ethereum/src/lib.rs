@@ -1,9 +1,10 @@
 use NamesRegistry::NamesRegistryInstance;
-
 use alloy_dyn_abi::DynSolValue;
 use alloy_network::{EthereumWallet, TransactionBuilder};
 pub use alloy_primitives::Address;
-use alloy_primitives::{address, keccak256, ruint::aliases::U256};
+pub use alloy_primitives::ruint::aliases::U256;
+pub use alloy_primitives::utils::format_units;
+use alloy_primitives::{address, keccak256};
 use alloy_provider::{
     Identity, PendingTransactionError, Provider, ProviderBuilder, RootProvider,
     fillers::{
@@ -131,10 +132,20 @@ impl ZeroxnameEthereum {
         }
     }
 
-    pub async fn send_sepolia_eth(&self, receiver: Address) -> Result<String, EthErrors> {
+    pub fn get_claim_amount(&self, coefficient: f64) -> U256 {
+        let base_value = self.faucet_limit as f64;
+        U256::from(base_value + base_value * coefficient)
+    }
+
+    pub async fn send_sepolia_eth(
+        &self,
+        receiver: Address,
+        coefficient: f64,
+    ) -> Result<String, EthErrors> {
+        let value = self.get_claim_amount(coefficient);
         let tx = TransactionRequest::default()
             .with_to(receiver)
-            .with_value(U256::from(self.faucet_limit));
+            .with_value(value);
 
         let tx_hash = self
             .sepolia_sender

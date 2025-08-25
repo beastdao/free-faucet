@@ -2,6 +2,7 @@ use dioxus::prelude::*;
 use ui::Claim;
 use ui::FAQ;
 use ui::Logs;
+use ui::Payout;
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
 const LOGO_IMAGE: Asset = asset!("/assets/logo.png");
@@ -29,6 +30,7 @@ fn Home() -> Element {
             alt_text: "A girl holding ETH crystal in a hand".to_string(),
         }
         Claim {}
+        Payout {}
         FAQ {}
     }
 }
