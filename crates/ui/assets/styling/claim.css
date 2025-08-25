@@ -2,7 +2,7 @@
 #claim {
     width: 50%;
     margin: 0 auto;
-    margin-top: 10vh;
+    margin-top: 1vh;
     background-color: var(--color-primary);
     padding: 20px;
     border-radius: 10px;
@@ -93,7 +93,9 @@
     #claim input {
         margin: 0;
         width: 80vw;
+        font-size: 20px;
     }
+
     #claim button {
         width: 80vw;
         font-size: 18px;

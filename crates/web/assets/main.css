@@ -16,7 +16,7 @@ body {
     align-items: center;
     height: 6vh;
     width: 50vw;
-    margin: 10vh 25vw;
+    margin: 7vh 25vw;
 }
 
 #header h1 {
@@ -25,7 +25,7 @@ body {
     text-align: center;
     line-height: 1;
     color: var(--color-main-accent);
-    font-weight: 600;
+    font-weight: 550;
     text-shadow: none;
 }
 
@@ -51,12 +51,14 @@ body {
         height: auto;
         gap: 20px;
         /* width: auto; */
-        width: 100%;
-        margin: 3vh 2vw;
+        width: auto;
+        margin: 3vh auto;
     }
     #header h1 {
         font-size: 30px;
-        width: auto;
+        width: 100%;
+        text-align: center;
+        margin: 0;
     }
     #logo {
         width: 100px;
