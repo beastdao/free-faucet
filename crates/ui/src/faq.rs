@@ -8,7 +8,9 @@ pub fn FAQ() -> Element {
         document::Link { rel: "stylesheet", href: FAQ_CSS }
         div { id: "faq",
             dl {
-                dt { "How does the faucet work?" }
+                dt {
+                    h4 { "How does the sepolia faucet work?" }
+                }
                 dd {
                     "To request funds, simply enter your 0xNAME with any TLN (Top Level Name) such as "
                     a { href: "https://app.0xname.foo/eth", target: "_blank", "myname@eth" }
@@ -20,14 +22,22 @@ pub fn FAQ() -> Element {
                     }
                     " and hit 'Claim SepETH'. "
                 }
-                dt { "How much can I claim?" }
-                dd { "You can request 0.05 Sepolia ETH every 24 hours. " }
-                dt { "What is 0xNAME and where do I get it? " }
+                dt {
+                    h4 { "How much Sepolia ETH can I claim?" }
+                }
                 dd {
-                    "0xNAME is a FREE public good personal names on the Ethereum blockchain. You can get your free name, such as alice@eth or bob@yourdao, at "
+                    "You can get up to 0.65 Sepolia ETH every 24 hours. The exact payout amount calculates dynamically based on faucet demand"
+                }
+                dt {
+                    h4 { "What is 0xNAME and where do I get it? " }
+                }
+                dd {
+                    "0xNAME is a FREE public good personal names (web3 domains) on the Ethereum blockchain. You can get your free name, such as alice@eth or bob@yourdao, at "
                     a { href: "https://app.0xname.foo", target: "_blank", "app.0xname.foo" }
                 }
-                dt { "Is the faucet open source?" }
+                dt {
+                    h4 { "Is the sepolia faucet open source?" }
+                }
                 dd {
                     "Yes, the faucet is open source. You can find the code on "
                     a {
@@ -37,14 +47,18 @@ pub fn FAQ() -> Element {
                     }
                     ". If you find a bug, please submit an issue. If you like the project, you can give it a star or fork and run your own faucet."
                 }
-                dt { "Does the faucet have logs?" }
+                dt {
+                    h4 { "Does the sepolia faucet have logs?" }
+                }
 
                 dd {
                     "Yes, the faucet logs are available here: "
                     a { href: "/logs", "Logs" }
                 }
 
-                dt { "Got more questions or feedback?" }
+                dt {
+                    h4 { "Got more questions or feedback?" }
+                }
                 dd {
                     "Help us improve! Join the conversation on our "
                     a {

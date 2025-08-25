@@ -30,7 +30,7 @@ fn Home() -> Element {
             alt_text: "A girl holding ETH crystal in a hand".to_string(),
         }
         Claim {}
-        Payout{}
+        Payout {}
         FAQ {}
     }
 }
