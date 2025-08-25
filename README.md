@@ -14,44 +14,42 @@
 
 ### Local Development
 
-- **Install Rust**  
+- **Install Rust**
    Follow the official [Rust installation guide](https://www.rust-lang.org/tools/install).
-- **Install Cargo Binstall**  
+- **Install Cargo Binstall**
    ```sh
    cargo install cargo-binstall
    ```
-- **Install Dioxus CLI**  
+- **Install Dioxus CLI**
    ```sh
    cargo install dioxus-cli
    ```
-- **Install Required Dependencies (Non-macOS Users)**  
+- **Install Required Dependencies (Non-macOS Users)**
    If you are not using macOS, install the necessary dependencies. Refer to the [Dioxus installation guide](https://dioxuslabs.com/learn/0.6/getting_started/#).
-- **Ensure the WASM Target is Installed**  
+- **Ensure the WASM Target is Installed**
    ```sh
    rustup target add wasm32-unknown-unknown
    ```
-- **Clone the Repository**  
+- **Clone the Repository**
    ```sh
    git clone https://github.com/beastdao/free-faucet.git
    ```
-- **Change dir to the Project Directory**  
+- **Change dir to the Project Directory**
    ```sh
-   cd 0xname-sepolia-faucet
+   cd free-faucet
    ```
-- **To build Bundle fro web**  
+- **To build Bundle fro web**
    ```sh
    dx bundle --package web
    ```
-- **Set Up Environment Variables**  
+- **Set Up Environment Variables**
    Provide the required parameters in the `.env` file.
-- **To run**  
+- **To run**
     ```sh
     dx serve --package web
     ```
-- **Format code before a Pull Request**  
-    Before submitting a pull request, ensure your code is formatted correctly:  
+- **Format code before a Pull Request**
+    Before submitting a pull request, ensure your code is formatted correctly:
     ```sh
     dx fmt
     ```
-
-     
