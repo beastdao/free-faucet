@@ -146,6 +146,28 @@ impl DB {
         }
     }
 
+    // return 0 if no previous claims
+    // reverse since we need largest timestamp
+    // finds first element that satisfies "true for status"
+    // find returns option -> transpose to work with result
+
+    pub fn get_last_claim_timestamp(
+        &self,
+        range_low: u64,
+        range_high: u64,
+    ) -> Result<u64, DBErrors> {
+        self.partition_logs
+            .range(range_low.to_be_bytes()..(range_high + 1).to_be_bytes())
+            .rev()
+            .map(|res| {
+                let (k, _) = res.db_error_with_context("get log keys from range")?;
+                convert_slice_to_tuple(&k)
+            })
+            .find(|res| matches!(res, Ok((_, s)) if *s == 1))
+            .transpose()
+            .map(|opt| opt.map(|(ts, _)| ts).unwrap_or(0))
+    }
+
     pub fn get_db_meta(&self) -> Result<DBMeta, DBErrors> {
         Ok(DBMeta {
             journal_disk_space: self.keyspace.disk_space(),

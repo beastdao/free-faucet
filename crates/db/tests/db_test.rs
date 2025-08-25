@@ -42,6 +42,49 @@ fn test_claim_insert_and_retrieve() {
 }
 
 #[test]
+fn test_claim_inserts_and_last_claim() {
+    dotenv().ok();
+    let partition_size_limit: u64 = env::var("PARTITION_SIZE_LIMIT")
+        .expect("should get env var for partition size limit")
+        .parse()
+        .expect("should parse u64");
+
+    // Setup - create temp database
+    let dir = tempdir().expect("should create temp dir");
+    let db_path = dir.path().to_str().expect("valid path");
+    let db = DB::new(db_path, partition_size_limit).expect("should create DB");
+
+    // Test data
+    let input = "beast@beast".to_string();
+    let result = "test_result".to_string();
+    let test_time_old = 1755965000u64; //oldest
+    let test_time_mid = 1755965100u64;
+    let test_time_last = 1755965200u64;
+
+    db.insert_k_v_logs(test_time_old, true, input.clone(), result.clone())
+        .expect("should insert log");
+    db.insert_k_v_logs(test_time_mid, true, input.clone(), result.clone())
+        .expect("should insert log");
+    db.insert_k_v_logs(test_time_last, true, input.clone(), result.clone())
+        .expect("should insert log");
+
+    let last_claim_timestamp = db
+        .get_last_claim_timestamp(0, 1755965900u64)
+        .expect("should retrieve timestamp");
+
+    dbg!(
+        "last claimed timestamp:{}, retrieved last claim timestamp: {}",
+        test_time_last,
+        last_claim_timestamp
+    );
+
+    assert_eq!(
+        last_claim_timestamp, test_time_last,
+        "Retrieved value should match biggest timestamp inserted"
+    );
+}
+
+#[test]
 fn test_log_insert_and_retrieve() {
     dotenv().ok();
     let partition_size_limit: u64 = env::var("PARTITION_SIZE_LIMIT")
