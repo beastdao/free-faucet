@@ -151,13 +151,8 @@ impl ZeroxnameEthereum {
             .sepolia_sender
             .send_transaction(tx)
             .await
-            .map_err(|e| EthErrors::RpcError(e))?
-            .with_required_confirmations(1)
-            .with_timeout(Some(std::time::Duration::from_secs(600)))
-            .watch()
-            .await
-            .map_err(|e| EthErrors::PendingTxError(e))?;
-        Ok(format!("{}", tx_hash))
+            .map_err(|e| EthErrors::RpcError(e))?;
+        Ok(format!("{}", tx_hash.tx_hash()))
     }
 
     async fn total_gas_fee(&self) -> Result<u128, EthErrors> {
