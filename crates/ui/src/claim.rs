@@ -11,16 +11,11 @@ enum ResponseState {
 }
 
 fn is_valid_input(input: &str) -> bool {
-    if input.is_empty() || !input.contains('@') {
-        return false;
-    }
-    let parts: Vec<&str> = input.split('@').collect();
-    if parts.len() != 2 {
-        return false;
-    }
-    let before_at = parts[0];
-    let after_at = parts[1];
-    before_at.len() >= 3 && after_at.len() >= 3
+    input
+        .split_once('@')
+        .map_or(false, |(before_at, after_at)| {
+            (3..=15).contains(&before_at.len()) && (3..=10).contains(&after_at.len())
+        })
 }
 
 #[component]
@@ -44,7 +39,7 @@ pub fn Claim() -> Element {
                     if !is_valid_input(&name.to_string()) {
                         response
                             .set(
-                                "Invalid input: Ensure it contains '@' and has at least 3 characters before and after."
+                                "Invalid input: Use name@tln (name 3–15 chars, tln 3-10)."
                                     .to_string(),
                             );
                         response_state.set(ResponseState::Error);
@@ -63,7 +58,26 @@ pub fn Claim() -> Element {
                         }
                         Err(ServerFnError::ServerError(msg)) => {
                             response_state.set(ResponseState::Error);
-                            response.set(format!("{}", msg));
+                            if msg.contains("Unable to resolve the name: No name found") {
+                                let clean_name = name
+                                    .to_string()
+                                    .split('@')
+                                    .next()
+                                    .unwrap_or_default()
+                                    .to_string();
+                                let suggested_name = format!("{}@eth", clean_name.to_lowercase());
+                                response
+                                    .set(
+                                        format!(
+                                            "{}. <br> <a href='https://app.0xname.foo/RegisterNameFinal/{}' target='_blank'> > GET FREE {} < </a>",
+                                            msg,
+                                            suggested_name,
+                                            suggested_name,
+                                        ),
+                                    );
+                            } else {
+                                response.set(msg);
+                            }
                         }
                         Err(_) => {
                             response_state.set(ResponseState::Error);

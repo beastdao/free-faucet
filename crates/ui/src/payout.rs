@@ -25,7 +25,6 @@ pub fn Payout() -> Element {
                             h3 { "{min} ETH" }
                             h3 { "{max} ETH" }
                         }
-                        
                         div { id: "track",
                             div { id: "dot", style: "left: {pos}%;" }
                         }
