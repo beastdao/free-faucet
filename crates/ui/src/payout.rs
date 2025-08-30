@@ -20,12 +20,11 @@ pub fn Payout() -> Element {
                         0.0
                     };
                     rsx! {
-                        h1 { "GET {current} SEPOLIA ETH NOW" }
+                        h2 { "GET {current} SEPOLIA ETH NOW" }
                         div { id: "labels",
                             h3 { "{min} ETH" }
                             h3 { "{max} ETH" }
                         }
-                        
                         div { id: "track",
                             div { id: "dot", style: "left: {pos}%;" }
                         }
